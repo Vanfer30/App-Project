@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+
+<body>
+    <h2>Create User</h2>
+    <div id="form1">
+        <!-- Display flashed error message -->
+        {% if error %}
+        <p style="color: red;">{{ get_flashed_messages() }}</p>
+        {% endif %}
+        <form id="userForm1" action="/register" method="post">
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Display list of users -->
+    <h2>List of Users</h2>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
